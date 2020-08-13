@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: "3225222357546784",
+          autoLogAppEvents: true,
+          xfbml: true,
+          version: "v8.0",
+        });
+      };
+    </script>
+    <script
+      async
+      defer
+      crossorigin="anonymous"
+      src="https://connect.facebook.net/en_US/sdk.js"
+    ></script>
+    <h1>Test FB SDK</h1>
+    <button class="btn-share">Share</button>
+    <script>
+      window.onload = () => {
+        document.querySelector(".btn-share").onclick = () => {
+          // console.log(FB);
+          var FBDesc = "A girl standing in the middle of sunflower field";
+          var FBTitle = "Sun Flower";
+          var FBLink = "https://thongtv-1835.github.io";
+          var FBPic =
+            "https://i.pinimg.com/564x/fb/f6/0c/fbf60cd5863d4aeff300a8b7e9ac7822.jpg";
+
+          FB.ui({
+            method: "share_open_graph",
+            action_type: "og.shares",
+            action_properties: JSON.stringify({
+              object: {
+                "og:url": FBLink,
+                "og:title": FBTitle,
+                "og:description": FBDesc,
+                "og:image": FBPic,
+              },
+            }),
+          });
+        };
+      };
+    </script>
+  </body>
+</html>

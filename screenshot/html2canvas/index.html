@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>Take screenshot of webpage with Html2Canvas</title>
+    <script
+      type="text/javascript"
+      src="https://makitweb.com/demo/html2canvas/html2canvas-master/dist/html2canvas.js"
+    ></script>
+  </head>
+  <body>
+    <h1>Take screenshot of webpage with html2canvas</h1>
+    <div class="container" id="container">
+      <img
+        src="https://makitweb.com/demo/html2canvas/images/image1.jpg"
+        width="100"
+        height="100"
+      />
+      <img
+        src="https://makitweb.com/demo/html2canvas/images/image2.jpg"
+        width="100"
+        height="100"
+      />
+      <img
+        src="https://makitweb.com/demo/html2canvas/images/image3.jpg"
+        width="100"
+        height="100"
+      />
+    </div>
+    <br />
+    <input
+      type="button"
+      id="but_screenshot"
+      value="Take screenshot"
+      onclick="screenshot();"
+    /><br />
+
+    <!-- Script -->
+    <script type="text/javascript">
+      function screenshot() {
+        html2canvas(document.body, { allowTaint: true }).then(function (
+          canvas
+        ) {
+          document.body.appendChild(canvas);
+          console.log(canvas.to);
+        });
+      }
+    </script>
+  </body>
+</html>

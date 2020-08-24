@@ -1,0 +1,53 @@
+<head>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script> -->
+  <script src="gesture-detector.js"></script>
+  <script src="gesture-handler.js"></script>
+  <script>
+    console.log("");
+  </script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <a-scene cursor="rayOrigin: mouse" screenshot="width: 750px; height: 1334px" gesture-detector>
+    <a-assets>
+      <a-asset-item id="model1" src="https://cdn.glitch.com/06bd98b4-97ee-4c07-a546-fe39ca205034%2Fbowser.glb">
+      </a-asset-item>
+    </a-assets>
+    <a-circle color="#cc0000" radius="0.05" position="-0.75 3 2" clear-selected></a-circle>
+    <a-entity id="model1" gltf-model="#model1" position="-1 0 1" scale="0.1 0.1 0.1" gesture-handler>
+    </a-entity>
+    <a-cylinder position="1 0.75 1" radius="0.5" height="1.5" color="#FFC65D" gesture-handler cursor='rayOrigin: mouse'>
+    </a-cylinder>
+    <a-plane rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+
+    <a-entity position="0 0 3.8">
+      <a-camera look-controls-enabled="false" keyboard-controls="mode: fps">
+      </a-camera>
+    </a-entity>
+  </a-scene>
+  <button class="button" onclick="screenshot()" style="position: absolute; bottom: 0">
+    Screen shot
+  </button>
+  <div id="noti"
+    style="position: absolute; top: 80px; left: 16px; width: calc(100% - 32px); height: 32px; color: #fff; background-color: red">
+    Hello
+  </div>
+  <script>
+    function screenshot() {
+      console.log(
+        document
+          .querySelector("a-scene")
+          .components.screenshot.getCanvas("perspective")
+          .toDataURL()
+      );
+      document
+        .querySelector("a-scene")
+        .components.screenshot.capture("perspective");
+    }
+    document.getElementById("noti").addEventListener("finishTutorial", () => {
+      debugger;
+    })
+  </script>
+</body>

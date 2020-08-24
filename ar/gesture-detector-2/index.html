@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <!-- <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script> -->
+  <!-- <script src="https://unpkg.com/aframe-environment-component@1.0.0/dist/aframe-environment-component.min.js"></script> -->
+  <script src="https://unpkg.com/aframe-event-set-component@4.0.1/dist/aframe-event-set-component.js"></script>
+  <script
+    src="https://unpkg.com/aframe-aabb-collider-component@3.1.0/dist/aframe-aabb-collider-component.min.js"></script>
+  <script src="gesture-detector.js"></script>
+  <script src="gesture-handler.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <a-scene arjs screenshot="width: 750px; height: 1334px" gesture-detector>
+    <a-circle color="#cc0000" radius="0.05" position="-0.5 3 2" clear-selected></a-circle>
+    <a-assets>
+      <a-asset-item id="model1"
+        src="https://cdn.jsdelivr.net/gh/siouxcitizen/3DModel@a1c2e47550ca20de421f6d779229f66efab07830/yuusha.gltf">
+      </a-asset-item>
+    </a-assets>
+    <a-entity aabb-collider="objects: a-plane" id="model1" gltf-model="#model1" position="-1 1 1" scale="0.5 0.4 0.5"
+      model-opacity="0.8" event-set__hitstart="model-opacity: 1" event-set__hitend="model-opacity: 0.5" gesture-handler>
+    </a-entity>
+    <a-assets>
+      <a-asset-item id="asset2"
+        src="https://cdn.jsdelivr.net/gh/siouxcitizen/3DModel@a1c2e47550ca20de421f6d779229f66efab07830/yuusha.gltf">
+      </a-asset-item>
+    </a-assets>
+    <a-entity scale="0.5 0.4 0.5" model-opacity="0.8" event-set__hitstart="model-opacity: 1"
+      event-set__hitend="model-opacity: 0.5" scale="0.5 0.5 0.5" gesture-handler emitevents="true" id="model2"
+      cursor="rayOrigin: mouse" gltf-model="#asset2">
+    </a-entity>
+    <a-plane id="press-here" aabb-collider="objects: a-entity" gesture-handler position="0 -1 0" rotation="-90 0 0"
+      width="4" height="4" color="#7BC8A4" event-set__hitstart="material.opacity: 1; material.color: #7BC8A4"
+      event-set__hitend="material.opacity: 0.5; material.color: #7BC8A4" cursor="rayOrigin: mouse;"></a-plane>
+
+    <a-entity id="rig" position="0 -1 5">
+      <a-camera id="camera" look-controls-enabled="false"></a-camera>
+    </a-entity>
+  </a-scene>
+</body>
+
+</html>

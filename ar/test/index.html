@@ -1,0 +1,29 @@
+<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+<script src="gesture-detector.js"></script>
+<script src="gesture-handler.js"></script>
+
+<body>
+  <a-scene cursor="rayOrigin: mouse" vr-mode-ui="enabled: false" gesture-detector>
+    <a-assets>
+      <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+      <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
+      <a-asset-item id="model1" src="https://cdn.glitch.com/06bd98b4-97ee-4c07-a546-fe39ca205034%2Fbowser.glb">
+      </a-asset-item>
+    </a-assets>
+
+    <!-- background -->
+    <!-- <a-cylinder id="ground" src="#groundTexture" radius="30" height="0.1"></a-cylinder> -->
+    <a-sky id="background" src="#skyTexture" theta-length="90" radius="30"></a-sky>
+
+
+    <!-- toogle -->
+    <a-circle color="#cc0000" radius="0.05" position="0 2 -2" clear-selected></a-circle>
+
+    <!-- entities -->
+    <a-entity id="model1" gltf-model="#model1" position="0 0 -1" scale="0.1 0.1 0.1" gesture-handler>
+    </a-entity>
+    <a-cylinder position="1 0.75 -1" radius="0.5" height="1.5" color="#FFC65D" gesture-handler
+      cursor='rayOrigin: mouse'>
+    </a-cylinder>
+  </a-scene>
+</body>
